@@ -4,12 +4,14 @@ import Scrabble from "./projects/scrabble/index.jsx";
 
 const projects = [
   {
+    index: "01",
     name: "Wordle",
     description: "A five-letter word guessing game.",
     path: "/projects/wordle",
     component: Wordle,
   },
   {
+    index: "02",
     name: "Scrabble",
     description: "Given an input string, return all possible valid words",
     path: "/projects/scrabble",
@@ -124,7 +126,7 @@ const ProjectArrow = styled.span`
 function ProjectIndex() {
   return (
     <>
-      <Eyebrow>Projects / 01</Eyebrow>
+      <Eyebrow>Projects / 0{projects.length}</Eyebrow>
       <Title>Small things, in progress.</Title>
       <ProjectList>
         {projects.map((project, index) => (
@@ -152,7 +154,9 @@ function App() {
     <Page>
       <Header>
         <Wordmark href="/">Index</Wordmark>
-        <HeaderNote>{project ? "Project 01" : "Personal projects"}</HeaderNote>
+        <HeaderNote>
+          {project ? `Project ${project.index}` : "Personal projects"}
+        </HeaderNote>
       </Header>
       <Content>{ActiveProject ? <ActiveProject /> : <ProjectIndex />}</Content>
     </Page>
